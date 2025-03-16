@@ -13680,7 +13680,7 @@ p {
 
 /* Modal Content */
 #reset-password-modal .modal-content {
-  background: white;
+  /* background: white; */
   padding: 20px;
   width: 90%;
   max-width: 400px;
@@ -13695,8 +13695,8 @@ p {
   position: absolute;
   top: 10px;
   right: 20px;
-  font-size: 18px;
-  color: #333;
+  font-size: 22px;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -13708,7 +13708,7 @@ p {
   border-radius: 4px;
 }
 
-#reset-password-modal button {
+/* #reset-password-modal button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -13716,7 +13716,7 @@ p {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
 
 #reset-password-modal button:hover {
   background-color: #0056b3;
