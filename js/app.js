@@ -246,23 +246,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add item to cart
   function addToCart(foodItemId) {
-    const token = localStorage.getItem("token"); // Get user's auth token
-
+    const token = localStorage.getItem("token");
+  
     if (!token) {
       showLoginModal();
       return;
     }
-
-    const cartData = {
-      food_item: foodItemId, // Item ID from the button
-      quantity: 1, // Default quantity
-    };
-
+  
+    const cartData = { food_item: foodItemId, quantity: 1 };
+  
     fetch(API_CART_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Add Authorization header
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(cartData),
     })
@@ -276,24 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((data) => {
         console.log("Item added to cart successfully:", data);
-        showToast("Item added to cart!", "success");
-
-        // Update cart item count in the navbar
-        if (data.cart_item_count !== undefined) {
-          updateCartItemCount(data.cart_item_count);
-        } else {
-          console.warn("Cart item count not provided in response.");
-        }
-
-        // Optional: Uncomment to redirect to cart
-        // console.log("Redirecting to cart page...");
-        // window.location.href = "/cart.html";
+        handleAddToCartSuccess(data); // Use the new function
       })
       .catch((error) => {
         console.error("Failed to add item to cart:", error);
         showToast("Failed to add item to cart!", "error");
       });
-  }
+  }  
 });
 
 function showToast(message, type = "success") {
@@ -826,9 +812,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const addToCartButton = document.querySelector(".add-to-cart");
       if (addToCartButton) {
         addToCartButton.addEventListener("click", () => {
-          showToast("Item added to cart!", "success");
+          addToCart(itemId); // Calls `addToCart`, which handles everything
         });
-      }
+      }      
     })
     .catch((error) => {
       console.error("Error fetching item details:", error);
@@ -836,3 +822,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "<p class='text-danger'>Failed to load item details. Please try again later.</p>";
     });
 });
+
+
+function handleAddToCartSuccess(data) {
+  showToast("Item added to cart!", "success");
+
+  if (data.cart_item_count !== undefined) {
+    updateCartItemCount(data.cart_item_count);
+  } else {
+    console.warn("Cart item count not provided in response.");
+  }
+}
+
