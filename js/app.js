@@ -689,49 +689,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Handle form submission
-  orderForm.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevent default form submission
+// Handle form submission
+orderForm.addEventListener("submit", async (e) => {
+  e.preventDefault(); // Prevent default form submission
 
-    // Get input values
-    const deliveryAddress = document
-      .getElementById("delivery-address")
-      .value.trim();
-    const phoneNumber = document.getElementById("phone-number").value.trim();
+  // Get input values
+  const deliveryAddress = document.getElementById("delivery-address").value.trim();
+  const phoneNumber = document.getElementById("phone-number").value.trim();
 
-    // Validate inputs
-    if (!deliveryAddress || !phoneNumber) {
-      alert("Please fill in all required fields.");
-      return;
-    }
+  // Validate inputs
+  if (!deliveryAddress || !phoneNumber) {
+    alert("Please fill in all required fields.");
+    return;
+  }
 
-    try {
-      // Send POST request to the API
-      const response = await fetch("https://foodooni-food-shop-backend.onrender.com/api/order/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include user's token
-        },
-        body: JSON.stringify({
-          delivery_address: deliveryAddress,
-          phone_number: phoneNumber,
-        }),
-      });
+  try {
+    // Send POST request to the API
+    const response = await fetch("https://foodooni-food-shop-backend.onrender.com/api/order/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include user's token
+      },
+      body: JSON.stringify({
+        delivery_address: deliveryAddress,
+        phone_number: phoneNumber,
+      }),
+    });
 
-      // Handle response
-      if (response.ok) {
-        alert("Order placed successfully!");
+    // Handle response
+    if (response.ok) {
+      // Show custom toast message
+      const toast = document.getElementById("order-success-toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
         orderModal.classList.add("hidden"); // Close the modal
         window.location.reload(); // Reload the page to clear the cart
-      } else {
-        const errorData = await response.json();
-        alert(errorData.error || "Failed to place order.");
-      }
-    } catch (error) {
-      console.error("Error placing order:", error);
-      alert("An unexpected error occurred.");
+      }, 3000); // Toast disappears after 3 seconds
+    } else {
+      const errorData = await response.json();
+      alert(errorData.error || "Failed to place order.");
     }
-  });
+  } catch (error) {
+    console.error("Error placing order:", error);
+    alert("An unexpected error occurred.");
+  }
+});
 });
 
 

@@ -13350,15 +13350,20 @@ textarea.form-control {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex: 1 1 calc(50% - 20px); /* Take 50% width with space for gap */
+  flex: 1 1 calc(50% - 20px);
 }
 
 .profile-info {
+  max-width: 400px;
   min-width: 300px;
+  height: 300px;
+  overflow: hidden; 
 }
 
 .order-history {
   min-width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 h2 {
@@ -13778,4 +13783,30 @@ p {
 
 .clickable-link:hover {
   color: #ffc107; /* Optional: adds an underline on hover for better visibility */
+}
+
+
+.toast-container {
+  position: fixed;
+  top: 10%;
+  right: 40%;
+  background-color: #28a745; /* Green Success */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toast-container.show {
+  display: block;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
 }
