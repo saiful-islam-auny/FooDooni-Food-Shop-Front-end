@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
-  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
+  // const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
   const menuTabs = document.getElementById("menu-tabs");
   const menuTabContent = document.getElementById("menu-tabContent");
 
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // discount item js start
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
 
   // Fetch discounted items
   fetch(`${API_BASE_URL}/specials/`)
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageUrl = item.image
           ? item.image.startsWith("http")
             ? item.image
-            : `https://foodooni-food-shop-backend.onrender.com${item.image}`
+            : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.image}`
           : "https://via.placeholder.com/300"; // Fallback image
 
         const originalPrice = parseFloat(item.price || "0").toFixed(2);
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // cart functionality start fom here
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
 
   // Handle "Add to Cart" and "Cart" button clicks
   document.addEventListener("click", (event) => {
@@ -247,14 +247,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add item to cart
   function addToCart(foodItemId) {
     const token = localStorage.getItem("token");
-  
+
     if (!token) {
       showLoginModal();
       return;
     }
-  
+
     const cartData = { food_item: foodItemId, quantity: 1 };
-  
+
     fetch(API_CART_URL, {
       method: "POST",
       headers: {
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Failed to add item to cart:", error);
         showToast("Failed to add item to cart!", "error");
       });
-  }  
+  }
 });
 
 function showToast(message, type = "success") {
@@ -306,7 +306,7 @@ function showToast(message, type = "success") {
 }
 // show the cart count
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
 
   // Update the cart item count in the navbar
   function updateCartItemCount(count) {
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // get cart item
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
   const cartItemsContainer = document.getElementById("cart-items");
   const cartTotalContainer = document.getElementById("cart-total");
   const addToOrderButton = document.getElementById("add-to-order");
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const imageUrl = item.food_item.image
             ? item.food_item.image.startsWith("http")
               ? item.food_item.image
-              : `https://foodooni-food-shop-backend.onrender.com${item.food_item.image}`
+              : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.food_item.image}`
             : "https://via.placeholder.com/50";
 
           const price =
@@ -563,7 +563,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const API_ORDER_HISTORY_URL = "https://foodooni-food-shop-backend.onrender.com/api/order/history/";
+  const API_ORDER_HISTORY_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/order/history/";
   const orderListContainer = document.getElementById("order-list");
 
   if (!orderListContainer) {
@@ -620,7 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const BASE_URL = "https://foodooni-food-shop-backend.onrender.com"; // Base URL for the images
+    const BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com"; // Base URL for the images
 
     orders.forEach((order) => {
       const orderHTML = `
@@ -689,60 +689,60 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Handle form submission
-// Handle form submission
-orderForm.addEventListener("submit", async (e) => {
-  e.preventDefault(); // Prevent default form submission
+  // Handle form submission
+  orderForm.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Prevent default form submission
 
-  // Get input values
-  const deliveryAddress = document.getElementById("delivery-address").value.trim();
-  const phoneNumber = document.getElementById("phone-number").value.trim();
+    // Get input values
+    const deliveryAddress = document.getElementById("delivery-address").value.trim();
+    const phoneNumber = document.getElementById("phone-number").value.trim();
 
-  // Validate inputs
-  if (!deliveryAddress || !phoneNumber) {
-    alert("Please fill in all required fields.");
-    return;
-  }
-
-  try {
-    // Send POST request to the API
-    const response = await fetch("https://foodooni-food-shop-backend.onrender.com/api/order/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include user's token
-      },
-      body: JSON.stringify({
-        delivery_address: deliveryAddress,
-        phone_number: phoneNumber,
-      }),
-    });
-
-    // Handle response
-    if (response.ok) {
-      // Show custom toast message
-      const toast = document.getElementById("order-success-toast");
-      toast.classList.add("show");
-
-      setTimeout(() => {
-        toast.classList.remove("show");
-        orderModal.classList.add("hidden"); // Close the modal
-        window.location.reload(); // Reload the page to clear the cart
-      }, 3000); // Toast disappears after 3 seconds
-    } else {
-      const errorData = await response.json();
-      alert(errorData.error || "Failed to place order.");
+    // Validate inputs
+    if (!deliveryAddress || !phoneNumber) {
+      alert("Please fill in all required fields.");
+      return;
     }
-  } catch (error) {
-    console.error("Error placing order:", error);
-    alert("An unexpected error occurred.");
-  }
-});
+
+    try {
+      // Send POST request to the API
+      const response = await fetch("https://foodooni-food-shop-backend-7mjp.onrender.com/api/order/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include user's token
+        },
+        body: JSON.stringify({
+          delivery_address: deliveryAddress,
+          phone_number: phoneNumber,
+        }),
+      });
+
+      // Handle response
+      if (response.ok) {
+        // Show custom toast message
+        const toast = document.getElementById("order-success-toast");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+          orderModal.classList.add("hidden"); // Close the modal
+          window.location.reload(); // Reload the page to clear the cart
+        }, 3000); // Toast disappears after 3 seconds
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || "Failed to place order.");
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("An unexpected error occurred.");
+    }
+  });
 });
 
 
 // item details 
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
 
   // Get item ID from URL query parameters
   const urlParams = new URLSearchParams(window.location.search);
@@ -766,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const imageUrl = item.image
         ? item.image.startsWith("http")
           ? item.image
-          : `https://foodooni-food-shop-backend.onrender.com${item.image}`
+          : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.image}`
         : "https://via.placeholder.com/600"; // Fallback image
 
       const itemHTML = `
@@ -819,7 +819,7 @@ document.addEventListener("DOMContentLoaded", () => {
         addToCartButton.addEventListener("click", () => {
           addToCart(itemId); // Calls `addToCart`, which handles everything
         });
-      }      
+      }
     })
     .catch((error) => {
       console.error("Error fetching item details:", error);
