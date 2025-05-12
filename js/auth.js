@@ -15,7 +15,7 @@ const handleRegistration = (event) => {
         password
       )
     ) {
-      fetch("https://foodooni-food-shop-backend-7mjp.onrender.com/api/user/register/", {
+      fetch("https://foodooni-food-shop-backend.onrender.com/api/user/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info),

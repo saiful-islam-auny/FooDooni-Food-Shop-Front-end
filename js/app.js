@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
-  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
+  // const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
   const menuTabs = document.getElementById("menu-tabs");
   const menuTabContent = document.getElementById("menu-tabContent");
 
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // discount item js start
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
 
   // Fetch discounted items
   fetch(`${API_BASE_URL}/specials/`)
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageUrl = item.image
           ? item.image.startsWith("http")
             ? item.image
-            : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.image}`
+            : `https://foodooni-food-shop-backend.onrender.com${item.image}`
           : "https://via.placeholder.com/300"; // Fallback image
 
         const originalPrice = parseFloat(item.price || "0").toFixed(2);
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // cart functionality start fom here
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
 
   // Handle "Add to Cart" and "Cart" button clicks
   document.addEventListener("click", (event) => {
@@ -306,7 +306,7 @@ function showToast(message, type = "success") {
 }
 // show the cart count
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
 
   // Update the cart item count in the navbar
   function updateCartItemCount(count) {
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // get cart item
 document.addEventListener("DOMContentLoaded", () => {
-  const API_CART_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/cart/";
+  const API_CART_URL = "https://foodooni-food-shop-backend.onrender.com/api/cart/";
   const cartItemsContainer = document.getElementById("cart-items");
   const cartTotalContainer = document.getElementById("cart-total");
   const addToOrderButton = document.getElementById("add-to-order");
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const imageUrl = item.food_item.image
             ? item.food_item.image.startsWith("http")
               ? item.food_item.image
-              : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.food_item.image}`
+              : `https://foodooni-food-shop-backend.onrender.com${item.food_item.image}`
             : "https://via.placeholder.com/50";
 
           const price =
@@ -563,7 +563,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const API_ORDER_HISTORY_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/order/history/";
+  const API_ORDER_HISTORY_URL = "https://foodooni-food-shop-backend.onrender.com/api/order/history/";
   const orderListContainer = document.getElementById("order-list");
 
   if (!orderListContainer) {
@@ -620,7 +620,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com"; // Base URL for the images
+    const BASE_URL = "https://foodooni-food-shop-backend.onrender.com"; // Base URL for the images
 
     orders.forEach((order) => {
       const orderHTML = `
@@ -705,7 +705,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Send POST request to the API
-      const response = await fetch("https://foodooni-food-shop-backend-7mjp.onrender.com/api/order/", {
+      const response = await fetch("https://foodooni-food-shop-backend.onrender.com/api/order/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -742,7 +742,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // item details 
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/menu";
+  const API_BASE_URL = "https://foodooni-food-shop-backend.onrender.com/api/menu";
 
   // Get item ID from URL query parameters
   const urlParams = new URLSearchParams(window.location.search);
@@ -766,7 +766,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const imageUrl = item.image
         ? item.image.startsWith("http")
           ? item.image
-          : `https://foodooni-food-shop-backend-7mjp.onrender.com${item.image}`
+          : `https://foodooni-food-shop-backend.onrender.com${item.image}`
         : "https://via.placeholder.com/600"; // Fallback image
 
       const itemHTML = `
