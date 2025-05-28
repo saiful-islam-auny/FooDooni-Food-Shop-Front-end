@@ -64,7 +64,7 @@ const handleLogin = (event) => {
 
   if (email && password) {
     // Call the login API
-    fetch("https://foodooni-food-shop-backend-7mjp.onrender.com/api/user/login/", {
+    fetch("https://foodooni-food-shop-backend-ogvo.onrender.com/api/user/login/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -125,11 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // profile showing
-const API_PROFILE_URL = "https://foodooni-food-shop-backend-7mjp.onrender.com/api/user/profile/";
+const API_PROFILE_URL = "https://foodooni-food-shop-backend-ogvo.onrender.com/api/user/profile/";
 const API_CHANGE_PASSWORD_URL =
-  "https://foodooni-food-shop-backend-7mjp.onrender.com/api/user/changepassword/";
+  "https://foodooni-food-shop-backend-ogvo.onrender.com/api/user/changepassword/";
 const API_RESET_PASSWORD_URL =
-  "https://foodooni-food-shop-backend-7mjp.onrender.com/api/user/send-reset-password-email/";
+  "https://foodooni-food-shop-backend-ogvo.onrender.com/api/user/send-reset-password-email/";
 
 function showToastProfile(message, type = "info") {
   let container = document.getElementById("toast-profile-container");
